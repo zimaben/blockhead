@@ -3,14 +3,14 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var path = require('path');
 
 // change these variables to fit your project
-const jsPath= './js';
-const cssPath = './css';
+const jsPath= './src/js/blocks';
+const cssPath = './src/css';
 const outputPath = 'dist';
-const localDomain = 'http://localhost:8001';
+const localDomain = 'http://localhost:8004';
 const entryPoints = {
   // 'app' is the output name, people commonly use 'bundle'
   // you can have more than 1 entry point
-  'app': jsPath + '/app.js',
+  '/blocks/headerlogo': jsPath + '/headerlogo.js',
   'style': cssPath + '/style.scss'
 };
 
@@ -33,6 +33,16 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      },
       {
         test: /\.s?[c]ss$/i,
         use: [

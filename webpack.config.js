@@ -11,6 +11,8 @@ const entryPoints = {
   // 'app' is the output name, people commonly use 'bundle'
   // you can have more than 1 entry point
   '/blocks/headerlogo': jsPath + '/headerlogo.js',
+  '/blocks/header': jsPath + '/header.js',
+  '/blocks/callnowbutton': jsPath + '/callnowbutton.js',
   'style': cssPath + '/style.scss'
 };
 

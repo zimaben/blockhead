@@ -67,5 +67,21 @@
 				}
 			]
 		}
+    },
+    "themesettings":{
+        "version" : "1.0.0",
+        "prefix" : "kitely", 
+        "contact": {
+            "phone": "331-240-9155",
+            "email": "ben.toth@kitelytech.com",
+            "countrycode": "1",
+            "social": {
+                "facebook": "https://www.facebook.com/kitelytech/",
+                "twitter": "https://twitter.com/kitelytech",
+                "linkedin": "https://www.linkedin.com/company/kitelytech/",
+                "instagram": "https://www.instagram.com/kitelytech/"
+            }
+        }
+
     }
 }

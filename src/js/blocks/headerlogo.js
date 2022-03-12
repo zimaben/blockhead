@@ -5,7 +5,7 @@ const { MediaUpload, InspectorControls } = wp.blockEditor;
 const { PanelBody, IconButton, TextControl   } = wp.components;
 
 
-registerBlockType('selfctrl-dashboard/textblock', { 
+registerBlockType('themeblockhead/headerlogo', { 
  
 	title: 'Kitely Upload Logo', 
 	icon: kitely_icons.kitelytech,

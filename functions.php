@@ -29,7 +29,7 @@ if( !class_exists( '\themeblockhead\Theme')) {
         }
         public static function register_theme_blocktype( $categories ){
             return array_merge(
-                $categories, array( array('slug'=>'kitelytech', 'title'=>'KitelyTech Blocks'))
+                $categories, array( array('slug'=>'kitelytech', 'title'=>'KitelyTech Blocks', 'icon' => 'kitely'))
             );
         }
 
@@ -49,9 +49,25 @@ if( !class_exists( '\themeblockhead\Theme')) {
                 'style'         => 'theme_blocks_global_css'
                  
             ) );
+            #block script
+            \wp_register_script( 'headercontainer', \get_template_directory_uri() . '/dist/blocks/header.js', array( 'wp-blocks', 'wp-editor'));
+            \register_block_type( 'themeblockhead/header', array(
+                'editor_script' => 'headercontainer',
+                'editor_style'  => 'theme_blocks_global_css',
+                'style'         => 'theme_blocks_global_css'
+                    
+            ) );
+            #block script
+            \wp_register_script( 'callnowbutton', \get_template_directory_uri() . '/dist/blocks/callnowbutton.js', array( 'wp-blocks', 'wp-editor'));
+            \register_block_type( 'themeblockhead/callnowbutton', array(
+                'editor_script' => 'callnowbutton',
+                'editor_style'  => 'theme_blocks_global_css',
+                'style'         => 'theme_blocks_global_css'
+                    
+            ) );
         }
 
-
+        
         public static function svg_support($filetypes){
             return array_merge($filetypes, [
                 'svg' => 'image/svg+xml'

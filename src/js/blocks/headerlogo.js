@@ -13,14 +13,11 @@ registerBlockType('themeblockhead/headerlogo', {
     //attributes
     attributes: {
         bgImage: {
-            type: 'string',
-			source: 'html',
-			default:null
+            type: 'string'
+
         },
         altText: {
-            type: 'string',
-			source: 'html',
-			default:''
+            type: 'string'
         }
     },   
 
@@ -47,8 +44,8 @@ registerBlockType('themeblockhead/headerlogo', {
 								icon="upload" 
 								className="editor-media-placeholder__button is-button is-default is-large"
 							>
-								Upload
-							</IconButton>)
+							Upload
+							</IconButton> )
 						}}
 					/>
 					<p><strong>Alt Text</strong></p>
@@ -59,10 +56,10 @@ registerBlockType('themeblockhead/headerlogo', {
 				</PanelBody>
 			</InspectorControls>,
 			<div className="logo">
-				<a href="/">
+				<a href="#">
 					<img className="logo-img"
-						 alt={altText}
 						 src={bgImage}
+						 alt={altText}
 					/>
 				</a>
 			</div>
@@ -75,11 +72,11 @@ registerBlockType('themeblockhead/headerlogo', {
 			<div className="logo">
 				<a href="/">
 					<img className="logo-img"
-						alt={altText}
-						src={bgImage}
+						 src={bgImage}
+						 alt={altText}
 					/>
 				</a>
-			</div>	
+			</div>
 		)
 	}
 });

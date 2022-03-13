@@ -1,0 +1,53 @@
+.is-root-container.block-editor-block-list__layout{
+    .site-header-wrap{
+        width: 100%;
+        display: flex;
+        header.site-header{
+            width:100%;
+            display:flex;
+            justify-content: space-between;
+            &.normal{
+                //left the nav
+                .wp-block-navigation{
+                    flex: 1;
+                    padding-left: 5%;
+                }
+            }
+            &.space-around{
+                justify-content:space-around;
+                .block-editor-inner-blocks .block-editor-block-list__layout{
+                    justify-content:space-around;
+                }
+            }
+            &.menu-center{
+                //this happens by default
+                .wp-block-navigation{ 
+                    flex:0;
+                    padding-left:unset;
+                }
+                .block-editor-inner-blocks .block-editor-block-list__layout{
+                 
+
+                }
+            }
+            &.logo-center{
+                .block-editor-inner-blocks .block-editor-block-list__layout::first-child{
+                    order:2;
+
+                }
+            }
+            
+            .block-editor-inner-blocks{
+                width:100%;
+
+                .block-editor-block-list__layout{
+                    width:100%;
+                    display:flex;
+                    & > * {
+                        border:1px #cdcdcd solid dashed;
+                    }
+                }
+            }
+        }
+    }       
+}

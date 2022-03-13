@@ -1,0 +1,27 @@
+.site-header-wrap{
+    width: 100%;
+    display: flex;
+    header{
+        width:100%;
+        display:flex;
+        justify-content: space-between;
+        &.normal{
+            //left the nav
+            .wp-block-navigation{
+                flex: 1;
+                padding-left: 5%;
+            }
+        }
+        &.space-around{
+            justify-content:space-around;
+        }
+        &.menu-center{
+            //this happens by default
+        }
+        &.logo-center{
+            .logo{
+                order:2;
+            }
+        }
+    }
+}

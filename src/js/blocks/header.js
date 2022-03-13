@@ -1,14 +1,20 @@
 import kitely_icons from './icons.js';
 import theme_info from '../../../theme.json'
 
+
 const { registerBlockType } = wp.blocks;
-const { PanelBody, ColorPalette, Button } = wp.components;
+const { PanelBody, ColorPalette, SelectControl } = wp.components;
+const { InspectorControls, InnerBlocks } = wp.blockEditor; 
+
+const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
+const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
+
 const TEMPLATE = [
     [ 'themeblockhead/headerlogo', {} ], 
-    [ 'core/image', {} ],
-    [ 'core/buttons', {} ],
+    [ 'core/navigation', {} ],
+    [ 'themeblockhead/callnowbutton', {} ],
 ];
-const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor; 
+
 
 wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
  
@@ -19,15 +25,15 @@ registerBlockType('themeblockhead/header', {
     category: 'kitelytech', 
     //attributes
     attributes: {
-        bgImage: {
+        bgColor: {
             type: 'string',
 			source: 'html',
-			default:null
+			default: null
         },
-        altText: {
+        headerStyle: {
             type: 'string',
 			source: 'html',
-			default:''
+			default: 'normal'
         }
     },  
 
@@ -36,43 +42,38 @@ registerBlockType('themeblockhead/header', {
     edit({attributes, setAttributes}){
 
         const {
-            title,
-            titleColor,
-            bgColor,
-            showForm
-
+            headerStyle,
+            bgColor
         } = attributes;
 
-        console.log(theme_info)
-        /* Not sure why this isn't coming through from theme support: theme colors */
-        const colors = [
-            { name: 'Black', color: '#000' },
-            { name: 'White', color: '#fff' },
-            { name: 'Self CTRL Blue', color: '#0085ff' }, 
-        ];
-        
-        function toggleShowForm( ){
-            setAttributes({showForm: !showForm})
-        }
-
-        function onChangeTitle( newtext ){
-            setAttributes({title: newtext})
-        }
-        function onChangeTitleColor( newcolor ){
-            setAttributes({titleColor: newcolor})
+        function onChangeHeaderStyle( newstyle ){
+            setAttributes({headerStyle: newstyle})
         }
         function onChangeBackgroundColor( newcolor ){
             setAttributes({bgColor: newcolor})
         }
+
         function returnBlocks(){
-            return(   
-                <div className="assessment-section">     
+            if(bgColor){
+                return(   
+                    <header className={headerStyle + ' site-header'} style={{ backgroundColor:bgColor}}>     
+                        <InnerBlocks
+                            template={ TEMPLATE }
+                            templateLock="all"
+                        />
+                    </header>                          
+                )
+            } else {
+                return (
+                    <header className={headerStyle + ' site-header'}>     
                     <InnerBlocks
                         template={ TEMPLATE }
                         templateLock="all"
                     />
-                </div>                          
-            )
+                </header>    
+                )
+            }
+
         }
 
 
@@ -80,28 +81,37 @@ registerBlockType('themeblockhead/header', {
         return ([
 
             <InspectorControls style={{marginBottom: '20px' }}>
-                <PanelBody title='Self CTRL Call To Action Button Settings'>
+                <PanelBody title='Header Settings'>
                     
-                    <p><strong>Set Background Color</strong></p>
-                    <ColorPalette colors={colors} value={ bgColor } onChange={ onChangeBackgroundColor }/> 
+                    <p><strong>Background Color</strong></p>      
+                    <ColorPalette colors={theme_info.settings.color.palette} value={ bgColor } onChange={ onChangeBackgroundColor }/> 
 
-                    <p><strong>Set Text Color</strong></p>
-                    <ColorPalette colors={colors} value={ titleColor } onChange={ onChangeTitleColor } />
+                    <p><strong>Set Header Type</strong></p>
+                    <SelectControl
+                        label="Header Type"
+                        value={ headerStyle }
+                        options={ [
+                            { 
+                                label: 'Default', 
+                                value: 'normal' },
+                            { 
+                                label: 'Evenly Spaced', 
+                                value: 'space-around' },
+                            { 
+                                label: 'Navigation Centered', 
+                                value: 'menu-center' },
+                            { 
+                                label: 'Logo Centered', 
+                                value: 'logo-center' }     
+                        
+                            ] }
+                        onChange={ onChangeHeaderStyle }
+						/>
 
-                    </PanelBody>  
-                </InspectorControls>,
-                <div className="assessment-block-wrap">
-                    {showForm && returnBlocks() }       
-                    <RichText key="editable"
-                        tagName="div"
-                        placeholder="Button Text"
-                        value={ showForm ? "cancel" : title }
-                        onChange={ onChangeTitle }
-                        onDoubleClick={ toggleShowForm }
-                        style={{ backgroundColor: bgColor, color: titleColor  }}
-                        className="button selfctrlbutton"
-                    />
-
+                </PanelBody>  
+            </InspectorControls>,
+                <div className="site-header-wrap">
+                    { returnBlocks() }       
                 </div>
         
             ]);
@@ -109,19 +119,13 @@ registerBlockType('themeblockhead/header', {
     },
     save({attributes}){ 
         const {
-            title,
-            titleColor,
+            headerStyle,
             bgColor
         } = attributes;
+
         return(
-            <div className="assessment-section">
+            <div className="site-header-wrap">
                 <InnerBlocks.Content />
-                <div
-                    style={{backgroundColor:bgColor, color:titleColor}} 
-                    data-button-state="initial" 
-                    onclick="toggleCommitForm(event);" 
-                    data-toggle-text="Nevermind"
-                    className="button selfctrlbutton">{title}</div>
             </div>
         )
     }

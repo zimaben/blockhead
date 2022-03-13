@@ -13,7 +13,8 @@ const entryPoints = {
   '/blocks/headerlogo': jsPath + '/headerlogo.js',
   '/blocks/header': jsPath + '/header.js',
   '/blocks/callnowbutton': jsPath + '/callnowbutton.js',
-  'style': cssPath + '/style.scss'
+  'style': cssPath + '/style.scss',
+  'editor': cssPath + '/editor.scss'
 };
 
 module.exports = {

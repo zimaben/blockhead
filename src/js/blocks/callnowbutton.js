@@ -5,41 +5,39 @@ const { registerBlockType } = wp.blocks;
 const { RichText, InspectorControls, ColorPalette } = wp.blockEditor; 
 const { PanelBody, TextControl   } = wp.components;
 
-const foreground = Object.entries(theme_info.settings.color.palette).filter( ([key, value]) => value == "foreground" );
-const background = Object.entries(theme_info.settings.color.palette).filter( ([key, value]) => value == "background" );
+const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
+const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
+
+console.log(foreground.color, background.color);
+console.log(theme_info.themesettings.contact.phone);
+console.log(kitely_icons.kitelytech)
 
 registerBlockType('themeblockhead/callnowbutton', { 
  
 	title: 'Kitely Button - Call Now', 
 	icon: kitely_icons.kitelytech,
-    category: 'kitelytech/buttons', 
+    category: 'kitelytech', 
     //attributes
     attributes: {
         bgColor: {
             type: 'string',
-			source: 'html',
-			default:background.color
+			default:foreground.color
         },
         textColor: {
             type: 'string',
-            source: 'html',
-            default: foreground.color
+            default: background.color
             
         },
         buttonIcon: {
             type: 'object',
-            selector: '.kt-icon',
             default: kitely_icons.phone
         },
         phoneNumber: {
             type: 'string',
-            source: 'html',
-            selector: 'div',
             default: theme_info.themesettings.contact.phone
         },
         countryCode: {
             type: 'string',
-            source: 'html',
             default: (typeof theme_info.themesettings.contact.countrycode === "undefined") ? "1" : theme_info.themesettings.contact.countrycode
         }
 
@@ -78,17 +76,17 @@ registerBlockType('themeblockhead/callnowbutton', {
                         value={textColor}
                         onChange={onTextColorChange}
                     />
+
 				</PanelBody>
 			</InspectorControls>,
-			<div className="button kitelybutton callnow" style={{backgroundColor: bgColor}}>          
-                <span class="kt-icon">{renderIcon(buttonIcon)}</span>
+			<div className="button kitelybutton callnow" style={{ backgroundColor:bgColor }}>          
+                <span class="kt-icon" style={{color:textColor}}>{renderIcon(buttonIcon)}</span> 
                 <RichText   key="editable" 
-                            tagName="SPAN"
+                            tagName="A"
                             value={phoneNumber}
                             onChange={onChangePhone}
-                            style={{ color: textColor }}
-                /> <br />
-                <span>( current link: { 'tel:+' + countryCode + '.' + phoneNumber } )</span>
+                            style={{ color:textColor }}
+                />
             </div>
 		]);
 	},
@@ -96,9 +94,9 @@ registerBlockType('themeblockhead/callnowbutton', {
 		const { bgColor, textColor, buttonIcon, phoneNumber, countryCode } = attributes;
         function renderIcon(icon){ return(icon) }
 		return (
-			<div className="button kitelybutton callnow">
-                <a href={ 'tel:+' + countryCode + '.' + phoneNumber }>
-                   <span class="kt-icon">{renderIcon(buttonIcon)}</span> { phoneNumber } 
+			<div className="button kitelybutton callnow" style={{ backgroundColor:bgColor }}>    
+                <a href={ 'tel:+' + countryCode + '.' + phoneNumber } style={{color:textColor}}>
+                   <span class="kt-icon" style={{color:textColor}}>{renderIcon(buttonIcon)}</span> { phoneNumber } 
                 </a>
             </div>
 		)

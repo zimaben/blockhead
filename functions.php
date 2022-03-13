@@ -39,13 +39,14 @@ if( !class_exists( '\themeblockhead\Theme')) {
 
             #shared js/css
             \wp_register_style( 'theme_blocks_global_css', \get_template_directory_uri() . '/dist/style.css', array(), $v, 'all' );
+            \wp_register_style( 'theme_blocks_editor_css', \get_template_directory_uri() . '/dist/editor.css', array(), $v, 'all' );
             \wp_register_script ( 'theme_blocks_global_js', \get_template_directory_uri() . '/dist/app.js', array('wp-blocks', 'wp-editor', 'wp-components'), $v, false );
             
             #block script
             \wp_register_script( 'headerlogo', \get_template_directory_uri() . '/dist/blocks/headerlogo.js', array( 'wp-blocks', 'wp-editor'));
             \register_block_type( 'themeblockhead/headerlogo', array(
                 'editor_script' => 'headerlogo',
-                'editor_style'  => 'theme_blocks_global_css',
+                'editor_style'  => 'theme_blocks_editor_css',
                 'style'         => 'theme_blocks_global_css'
                  
             ) );
@@ -53,7 +54,7 @@ if( !class_exists( '\themeblockhead\Theme')) {
             \wp_register_script( 'headercontainer', \get_template_directory_uri() . '/dist/blocks/header.js', array( 'wp-blocks', 'wp-editor'));
             \register_block_type( 'themeblockhead/header', array(
                 'editor_script' => 'headercontainer',
-                'editor_style'  => 'theme_blocks_global_css',
+                'editor_style'  => 'theme_blocks_editor_css',
                 'style'         => 'theme_blocks_global_css'
                     
             ) );
@@ -61,7 +62,7 @@ if( !class_exists( '\themeblockhead\Theme')) {
             \wp_register_script( 'callnowbutton', \get_template_directory_uri() . '/dist/blocks/callnowbutton.js', array( 'wp-blocks', 'wp-editor'));
             \register_block_type( 'themeblockhead/callnowbutton', array(
                 'editor_script' => 'callnowbutton',
-                'editor_style'  => 'theme_blocks_global_css',
+                'editor_style'  => 'theme_blocks_editor_css',
                 'style'         => 'theme_blocks_global_css'
                     
             ) );

@@ -27,12 +27,10 @@ registerBlockType('themeblockhead/header', {
     attributes: {
         bgColor: {
             type: 'string',
-			source: 'html',
 			default: null
         },
         headerStyle: {
             type: 'string',
-			source: 'html',
 			default: 'normal'
         }
     },  

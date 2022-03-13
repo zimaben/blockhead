@@ -8,9 +8,6 @@ const { PanelBody, TextControl   } = wp.components;
 const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
 const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
 
-console.log(foreground.color, background.color);
-console.log(theme_info.themesettings.contact.phone);
-console.log(kitely_icons.kitelytech)
 
 registerBlockType('themeblockhead/callnowbutton', { 
  

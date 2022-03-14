@@ -67,15 +67,25 @@
         "version" : "1.0.0",
         "prefix" : "kitely", 
         "contact": {
-            "phone": "331-240-9155",
+            "phone": "555-555-5555",
             "email": "ben.toth@kitelytech.com",
             "countrycode": "1",
-            "social": {
-                "facebook": "https://www.facebook.com/kitelytech/",
-                "twitter": "https://twitter.com/kitelytech",
-                "linkedin": "https://www.linkedin.com/company/kitelytech/",
-                "instagram": "https://www.instagram.com/kitelytech/"
-            }
+            "social": [
+                {"facebook": "https://www.facebook.com/kitelytech/"},
+                {"twitter": "https://twitter.com/kitelytech"},
+                {"linkedin": "https://www.linkedin.com/company/kitelytech/"},
+                {"instagram": "https://www.instagram.com/kitelytech/"}
+            ],
+            "locations":[
+                {"name": "CHICAGO", "phone":"331-240-9155", "email":null},
+                {"name": "ATLANTA", "phone":"678-992-5332", "email":null},
+                {"name": "AUSTIN", "phone":"512.895.9552", "email":null},
+                {"name": "DETROIT", "phone":"313.449.8442", "email": null},
+                {"name": "CHARLOTTE", "phone":"980.288.5559", "email":null},
+                {"name": "NEW YORK", "phone":"917.745.5357", "email":null},
+                {"name": "PHOENIX", "phone":"602.325.2707", "email":null},
+                {"name": "MIAMI", "phone":"954.228.9921", "email":null}
+            ]
         }
 
     }

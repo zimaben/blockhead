@@ -17,7 +17,7 @@ const TEMPLATE = [
 				"core/column",
 				{ className: "footer-col"},
 				[
-					["core/image", { className: "footer-loco" }],
+					["core/image", { className: "footer-logo" }],
 					["core/list", { className: "pro-list" }]
 				]
 			],
@@ -62,7 +62,7 @@ registerBlockType('themeblockhead/footer', {
         },
         footerColor: {
             type: 'string',
-            default: null
+            default: "#222222"
         }
     },  
 

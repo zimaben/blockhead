@@ -82,6 +82,23 @@ if( !class_exists( '\themeblockhead\Theme')) {
                 'style'         => 'theme_blocks_global_css'
                     
             ) );
+
+            #block script
+            \wp_register_script( 'phonelink', \get_template_directory_uri() . '/dist/blocks/phonelink.js', array( 'wp-blocks', 'wp-editor', 'wp-components'));
+            \register_block_type( 'themeblockhead/phonelink', array(
+                'editor_script' => 'phonelink',
+                'editor_style'  => 'theme_blocks_editor_css',
+                'style'         => 'theme_blocks_global_css'
+                    
+            ) );
+            #block script
+            \wp_register_script( 'phonelist', \get_template_directory_uri() . '/dist/blocks/phonelist.js', array( 'wp-blocks' ));
+            \register_block_type( 'themeblockhead/phonelist', array(
+                'editor_script' => 'phonelist',
+                'editor_style'  => 'theme_blocks_editor_css',
+                'style'         => 'theme_blocks_global_css'
+                    
+            ) );
         }
 
         

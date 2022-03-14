@@ -20,7 +20,7 @@ wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
  
 registerBlockType('themeblockhead/header', { 
  
-	title: 'Kitely Tech Header', 
+	title: 'KitelySTech Header', 
 	icon: kitely_icons.kitelytech,
     category: 'kitelytech', 
     //attributes

@@ -3,7 +3,7 @@ import theme_info from '../../../theme.json'
 
 
 const { registerBlockType } = wp.blocks;
-const { PanelBody, ColorPalette, SelectControl } = wp.components;
+const { PanelBody, ColorPalette } = wp.components;
 const { InspectorControls, RichText } = wp.blockEditor; 
 
 const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];

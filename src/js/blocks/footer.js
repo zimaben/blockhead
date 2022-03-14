@@ -4,10 +4,7 @@ import theme_info from '../../../theme.json'
 const { registerBlockType } = wp.blocks; 
 const { InnerBlocks } = wp.editor; 
 const { InspectorControls } = wp.blockEditor; 
-const {PanelBody } = wp.components
-
-const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
-const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
+const {PanelBody,ColorPalette, SelectControl } = wp.components
 
 wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
 
@@ -61,7 +58,7 @@ registerBlockType('themeblockhead/footer', {
     attributes: {
         footerType: {
             type: 'string',
-			default: null
+			default: 'normal'
         },
         footerColor: {
             type: 'string',
@@ -88,7 +85,7 @@ registerBlockType('themeblockhead/footer', {
             if(footerColor){
                 return(   
                     <footer className={footerType + ' site-footer'} style={{ backgroundColor:footerColor}}>     
-                        <InnerBlocks.Content
+                        <InnerBlocks
                             template={ TEMPLATE }
                             templateLock="all"
                         />
@@ -97,7 +94,7 @@ registerBlockType('themeblockhead/footer', {
             } else {
                 return (
                     <footer className={footerType + ' site-footer'}>     
-                        <InnerBlocks.Content
+                        <InnerBlocks
                             template={ TEMPLATE }
                             templateLock="all"
                         />
@@ -111,8 +108,26 @@ registerBlockType('themeblockhead/footer', {
                 <PanelBody title='Footer Settings'>
                     
                     <p><strong>Footer Background Color</strong></p>      
-                    <ColorPalette colors={theme_info.settings.color.palette} value={ preFooterColor } onChange={ onChangeBackgroundColor }/> 
-
+                    <ColorPalette colors={theme_info.settings.color.palette} value={ footerColor } onChange={ onChangeBackgroundColor }/> 
+                    
+                    <p><strong>Footer Type</strong></p>
+                    <SelectControl
+                        label="Seledt Footer Type"
+                        value={ footerType }
+                        options={ [
+                            { 
+                                label: 'Default', 
+                                value: 'normal' },
+                            { 
+                                label: 'Evenly Spaced', 
+                                value: 'space-around' },
+                            { 
+                                label: 'Centered', 
+                                value: 'menu-center' }   
+                        
+                            ] }
+                        onChange={ onChangeFooterType }
+						/>
                 </PanelBody>  
             </InspectorControls>,
             <div className={'footerwrap'}>

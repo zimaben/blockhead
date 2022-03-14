@@ -71,7 +71,6 @@ registerBlockType('themeblockhead/header', {
                 </header>    
                 )
             }
-
         }
 
 
@@ -121,9 +120,25 @@ registerBlockType('themeblockhead/header', {
             bgColor
         } = attributes;
 
+        function returnBlocks(){
+            if(bgColor){
+                return(   
+                    <header className={headerStyle + ' site-header'} style={{ backgroundColor:bgColor}}>     
+                        <InnerBlocks.Content />
+                    </header>                          
+                )
+            } else {
+                return (
+                    <header className={headerStyle + ' site-header'}>     
+                        <InnerBlocks.Content />
+                    </header>    
+                )
+            }
+        }
+
         return(
             <div className="site-header-wrap">
-                <InnerBlocks.Content />
+               { returnBlocks() }
             </div>
         )
     }

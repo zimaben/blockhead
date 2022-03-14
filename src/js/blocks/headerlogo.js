@@ -7,7 +7,7 @@ const { PanelBody, IconButton, TextControl   } = wp.components;
 
 registerBlockType('themeblockhead/headerlogo', { 
  
-	title: 'Kitely Upload Logo', 
+	title: 'KitelyTech Upload Logo', 
 	icon: kitely_icons.kitelytech,
     category: 'kitelytech', 
     //attributes

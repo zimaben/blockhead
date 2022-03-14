@@ -11,7 +11,7 @@ const background = theme_info.settings.color.palette.filter( item => item.slug =
 
 registerBlockType('themeblockhead/callnowbutton', { 
  
-	title: 'Kitely Button - Call Now', 
+	title: 'KitelyTech Button - Call Now', 
 	icon: kitely_icons.kitelytech,
     category: 'kitelytech', 
     //attributes

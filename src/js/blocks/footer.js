@@ -10,20 +10,17 @@ wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
 
 const TEMPLATE = [
 	[
-		"core/columns",
-		{},
+		"core/columns", {},
 		[
 			[
-				"core/column",
-				{ className: "footer-col"},
+				"core/column", { className: "footer-col"},
 				[
 					["core/image", { className: "footer-logo" }],
-					["core/list", { className: "pro-list" }]
+					["themeblockhead/phonelist", {}] 
 				]
 			],
 			[
-				"core/column",
-				{ className: "footer-col"},
+				"core/column", { className: "footer-col"},
 				[
 					[ "core/heading", { placeholder: "Services", className: "footer-title" } ],
 					["core/list", { className: "footer-list" }]
@@ -41,10 +38,16 @@ const TEMPLATE = [
 				"core/column",
 				{ className: "footer-col"},
 				[
-					["core/paragraph", { placeholder: "Placeholder Until We have Social Widgets", className: "footer-title" } ]
+                    [ "core/heading", { placeholder: "Follow Us On", className: "footer-social-title" } ],
+					["themeblockhead/sociallist", {} ],
+                    [ "core/heading", { placeholder: "KitelyTech Review", className: "footer-social-title" } ],
+                    ["themeblockhead/sociallist", {} ],
+                    [ "core/heading", { placeholder: "Newsletter Subscription", className: "newsletter-title" } ],
+                    ["themeblockhead/newsletter", {} ],
+                    
+
 				]
 			],
-
 		]
 	]
 ];
@@ -96,7 +99,7 @@ registerBlockType('themeblockhead/footer', {
                     <footer className={footerType + ' site-footer'}>     
                         <InnerBlocks
                             template={ TEMPLATE }
-                            templateLock="all"
+
                         />
                     </footer>   
                 )

@@ -28,3 +28,10 @@
 .is-root-container.block-editor-block-list__layout .logo {
   display: inline-flex; }
 
+.theme-contactlist .contacts {
+  list-style-type: none; }
+  .theme-contactlist .contacts .kitelywidget.callnow div {
+    display: flex; }
+    .theme-contactlist .contacts .kitelywidget.callnow div .kt-icon {
+      margin-right: 1rem; }
+

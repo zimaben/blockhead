@@ -99,6 +99,22 @@ if( !class_exists( '\themeblockhead\Theme')) {
                 'style'         => 'theme_blocks_global_css'
                     
             ) );
+            #block script
+            \wp_register_script( 'sociallist', \get_template_directory_uri() . '/dist/blocks/sociallist.js', array( 'wp-blocks' ));
+            \register_block_type( 'themeblockhead/sociallist', array(
+                'editor_script' => 'sociallist',
+                'editor_style'  => 'theme_blocks_editor_css',
+                'style'         => 'theme_blocks_global_css'
+                    
+            ) );
+            #block script
+            \wp_register_script( 'newsletter', \get_template_directory_uri() . '/dist/blocks/newsletter.js', array( 'wp-blocks' ));
+            \register_block_type( 'themeblockhead/newsletter', array(
+                'editor_script' => 'newsletter',
+                'editor_style'  => 'theme_blocks_editor_css',
+                'style'         => 'theme_blocks_global_css'
+                    
+            ) );
         }
 
         

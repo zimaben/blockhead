@@ -1,0 +1,13 @@
+.theme-contactlist{
+    .contacts{
+        list-style-type:none;
+        .kitelywidget.callnow{
+            div{
+                display:flex;
+                .kt-icon{
+                    margin-right:1rem;
+                }
+            }
+        }
+    }
+}

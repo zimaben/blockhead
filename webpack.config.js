@@ -10,6 +10,9 @@ const localDomain = 'http://localhost:8004';
 const entryPoints = {
   // 'app' is the output name, people commonly use 'bundle'
   // you can have more than 1 entry point
+
+  '/blocks/newsletter': jsPath + '/newsletter.js',
+  '/blocks/sociallist': jsPath + '/sociallist.js',
   '/blocks/phonelist': jsPath + '/phonelist.js',
   '/blocks/phonelink': jsPath + '/phonelink.js',
   '/blocks/footer': jsPath + '/footer.js',

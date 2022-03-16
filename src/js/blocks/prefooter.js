@@ -4,7 +4,7 @@ import theme_info from '../../../theme.json'
 
 const { registerBlockType } = wp.blocks;
 const { PanelBody, ColorPalette } = wp.components;
-const { InspectorControls, RichText } = wp.blockEditor; 
+const { InspectorControls, RichText, TextControl } = wp.blockEditor; 
 
 const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
 const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
@@ -64,21 +64,19 @@ registerBlockType('themeblockhead/prefooter', {
                 <div className="prefooter-wrap" style={{backgroundColor:preFooterColor}}>
                     <div className="prefooter-container">
                         <div class="prefooter-left">
-                        <RichText
-                            key="one"
-                            tagName="div"
+                        <TextControl
                             className="widget-left"
                             value={ widgetCodeLeft }
                             onChange={onwidgetCodeLeft}
+                            label="Widget Code for the left"
                         />
                         </div>
                         <div class="prefooter-right">
-                            <RichText
-                                key="two"
-                                tagName="div"
+                            <TextControl
                                 className="widget-right"
                                 value={ widgetCodeRight }
                                 onChange={onwidgetCodeRight}
+                                label="Widget Code for the right"
                             />
                         </div>    
                     </div>
@@ -99,20 +97,10 @@ registerBlockType('themeblockhead/prefooter', {
             <div className="prefooter-wrap" style={{backgroundColor:preFooterColor}}>
                 <div className="prefooter-container">
                     <div class="prefooter-left">
-                    <RichText.Content
-                        key="one"
-                        tagName="div"
-                        className="widget-left"
-                        value={widgetCodeLeft}
-                    />
+                    <script type="text/javascript" src={widgetCodeLeft} ></script>
                     </div>
                     <div class="prefooter-right">
-                        <RichText.Content
-                            key="two"
-                            tagName="div"
-                            className="widget-right"
-                            value={widgetCodeRight}
-                        />
+                    <script type="text/javascript" src={widgetCodeRight} ></script>
                     </div>    
                 </div>       
             </div>

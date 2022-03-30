@@ -1,0 +1,27 @@
+.theme-contactsocial {
+    h6{
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 500;
+        padding-bottom: 15px;
+        margin:0;
+    }
+    ul.kitely-social-list {
+        display: inline-flex;
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        li{
+            margin: 0 20px 0 0;
+        }
+    }
+}
+
+@media screen and (min-width:981px){
+    .theme-contactsocial{
+        ul.kitely-social-list {
+
+
+        }
+    }
+}

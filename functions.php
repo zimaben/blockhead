@@ -76,14 +76,7 @@ if( !class_exists( '\themeblockhead\Theme')) {
                 'style'         => 'theme_blocks_global_css'
                     
             ) );
-            #block script
-            \wp_register_script( 'prefooter', \get_template_directory_uri() . '/dist/blocks/prefooter.js', array( 'wp-blocks', 'wp-editor'));
-            \register_block_type( 'themeblockhead/prefooter', array(
-                'editor_script' => 'prefooter',
-                'editor_style'  => 'theme_blocks_editor_css',
-                'style'         => 'theme_blocks_global_css'
-                    
-            ) );
+
             #block script
             \wp_register_script( 'footer', \get_template_directory_uri() . '/dist/blocks/footer.js', array( 'wp-blocks', 'wp-editor'));
             \register_block_type( 'themeblockhead/footer', array(

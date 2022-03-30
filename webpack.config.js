@@ -16,7 +16,6 @@ const entryPoints = {
   '/blocks/phonelist': jsPath + '/phonelist.js',
   '/blocks/phonelink': jsPath + '/phonelink.js',
   '/blocks/footer': jsPath + '/footer.js',
-  '/blocks/prefooter': jsPath + '/prefooter.js',
   '/blocks/headerlogo': jsPath + '/headerlogo.js',
   '/blocks/header': jsPath + '/header.js',
   '/blocks/callnowbutton': jsPath + '/callnowbutton.js',

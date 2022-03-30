@@ -10,11 +10,17 @@ wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
 
 const TEMPLATE = [
 
-    [ "core/columns", {},
+    [ "core/columns", {className:"prefooter-row"},
         [
 
             [ "core/column",
                 { className: "prefooter-col left"},
+                [
+                    ["core/html", { className: "kitely-review" }]
+                ]
+            ],
+            [ "core/column",
+                { className: "prefooter-col mid"},
                 [
                     ["core/html", { className: "kitely-review" }]
                 ]
@@ -36,7 +42,7 @@ const TEMPLATE = [
 					["core/image", { className: "footer-logo" }],
 					["themeblockhead/phonelist", {}] 
 				]
-			],
+			], 
 			[
 				"core/column", { className: "footer-col"},
 				[
@@ -56,9 +62,8 @@ const TEMPLATE = [
 				"core/column",
 				{ className: "footer-col"},
 				[
-                    [ "core/heading", { placeholder: "Follow Us On", className: "footer-social-title" } ],
+                    
 					["themeblockhead/sociallist", {} ],
-                    [ "core/heading", { placeholder: "KitelyTech Review", className: "footer-social-title" } ],
                     ["themeblockhead/sociallist", {} ],
                     [ "core/heading", { placeholder: "Newsletter Subscription", className: "newsletter-title" } ],
                     ["themeblockhead/newsletter", {} ],
@@ -155,7 +160,7 @@ registerBlockType('themeblockhead/footer', {
                     <footer className={footerType + ' site-footer'}>     
                         <InnerBlocks.Content
                             template={ TEMPLATE }
-                            templateLock="all"
+                            
                         />
                     </footer>    
             </div>

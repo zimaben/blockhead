@@ -12,6 +12,10 @@ registerBlockType('themeblockhead/sociallist', {
     category: 'kitelytech', 
     //attributes
     attributes: {
+        title: {
+            type: 'string',
+            default: null
+        },
         list: {
             type: 'object',
 			default:theme_info.themesettings.contact.social
@@ -28,16 +32,18 @@ registerBlockType('themeblockhead/sociallist', {
     },   
 
 	edit({attributes, setAttributes}){
-		const { list, textColor, themeIcons } = attributes;
-
+		const { title, list, textColor, themeIcons } = attributes;
+        function onChangeTitle(newtitle){
+            setAttributes({title: newtitle})
+        }
         function renderIcon(icon){ return(icon) }
 
         function singleItem( name, link){
             return(                  
                 <li className="kitely-social-list-item">
-
+                    <a href={link} target="_blank" rel="noopener">
                         <div className="kt-icon" style={{color:textColor}}>{renderIcon(themeIcons[name])}</div>     
-
+                    </a>
                 </li>
             )
         }
@@ -61,7 +67,12 @@ registerBlockType('themeblockhead/sociallist', {
                 </PanelBody> 
             </InspectorControls>,
             <div className="theme-contactsocial">
-                
+                <RichText 
+                    value={title}
+                    onChange={onChangeTitle}
+                    tagName="H6"
+                    style={{color:textColor}}
+                />
                 <ul className="kitely-social-list">
                     {  renderList(list) }    
                 </ul>    
@@ -70,33 +81,34 @@ registerBlockType('themeblockhead/sociallist', {
         ])
 	},
     save({attributes}){
-        const { list, textColor, themeIcons } = attributes;
+        const {title, list, textColor, themeIcons } = attributes;
 
         function renderIcon(icon){ return(icon) }
 
-        function singleItem( name,icon, link){
-            return(                
+        function singleItem( name, link){
+            return(                  
                 <li className="kitely-social-list-item">
-                    <a href={link} title={name}>
-                        <div class="kt-icon" style={{color:textColor}}>{renderIcon(icon)}</div>     
+                    <a href={link} target="_blank" rel="noopener">
+                        <div className="kt-icon" style={{color:textColor}}>{renderIcon(themeIcons[name])}</div>     
                     </a>
                 </li>
             )
         }
         function renderList(list){  
-            Object.keys(list).map(function (key) {
-                let icon = themeIcons[key]
-                let link = list[key]
-                return( singleItem(key, icon, link) )
-            })
+            return(
+                list.map( (item, index) =>  Object.keys(item).map(function (key) { 
+                    const link = item[key];
+                    return( singleItem(key, link) )
+                }))
+            )   
         }
 
         return (
             
             <div className="theme-contactsocial">
-                
+                <h6 style={{color: textColor}}>{title}</h6>
                 <ul className="kitely-social-list">
-                    {renderList(list)}    
+                    { renderList(list) }    
                 </ul>    
             </div>
         )

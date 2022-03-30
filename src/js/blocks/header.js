@@ -9,18 +9,37 @@ const { InspectorControls, InnerBlocks } = wp.blockEditor;
 const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
 const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
 
-const TEMPLATE = [
+const TEMPLATE_OLD = [
+
     [ 'themeblockhead/headerlogo', {} ], 
     [ 'core/navigation', {} ],
     [ 'themeblockhead/callnowbutton', {} ],
 ];
+const TEMPLATE = [
+    [ "core/columns", {className: "site-header-row"},
+
+        [
+
+            [ "core/column", {className:"left-nav-container"}, [  ["themeblockhead/headerlogo", {} ]   ] 
+                
+            ],
+            [ "core/column", {className:"top-nav-container"}, [  ["core/navigation", {className:"top-nav"} ]   ]
+                
+            ],
+            [ "core/column", {className:"right-nav-container"}, [  ["themeblockhead/callnowbutton", {className:"right-nav"} ]   ]
+                
+            ],
+        ]
+    ]
+];
+
 
 
 wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
  
 registerBlockType('themeblockhead/header', { 
  
-	title: 'KitelySTech Header', 
+	title: 'KitelyTech Header', 
 	icon: kitely_icons.kitelytech,
     category: 'kitelytech', 
     //attributes

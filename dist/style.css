@@ -21,17 +21,46 @@
   flex-direction: column; }
 
 /* blocks */
-.theme-contactlist ul.contacts {
-  padding: 0;
-  list-style: none; }
+.theme-contactlist {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .theme-contactlist ul.contacts {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%; }
+    .theme-contactlist ul.contacts li {
+      padding: 0 1rem 0 0;
+      margin: 0 0 25px 0;
+      width: 100%; }
+
+@media screen and (min-width: 961px) {
+  .theme-contactlist ul.contacts li {
+    width: 50%;
+    display: inline-flex;
+    box-sizing: border-box; }
+  .theme-contactlist ul.contacts li:nth-of-type(even) {
+    padding: 0; } }
+
+.kitelywidget.callnow h6 {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  padding-bottom: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block; }
 
 .kitelywidget.callnow a {
-  text-decoration: none;
-  display: inline-flex; }
+  text-decoration: none; }
   .kitelywidget.callnow a .kt-icon {
-    width: 20px;
+    width: 16px;
     height: 20px;
-    margin-right: 7px; }
+    margin-right: 7px;
+    display: inline-flex; }
     .kitelywidget.callnow a .kt-icon svg {
       max-width: 100%; }
 
@@ -46,6 +75,21 @@
     width: 20px;
     height: 20px;
     margin-right: 7px; }
+
+.theme-contactsocial h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  padding-bottom: 15px;
+  margin: 0; }
+
+.theme-contactsocial ul.kitely-social-list {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+  width: 100%; }
+  .theme-contactsocial ul.kitely-social-list li {
+    margin: 0 20px 0 0; }
 
 .logo {
   display: inline-flex;
@@ -73,29 +117,70 @@
   display: flex;
   flex-direction: column;
   justify-content: center; }
+  .footerwrap .kitely-post-footer {
+    margin-bottom: 0; }
+  .footerwrap .footer-list {
+    padding: 0; }
+    .footerwrap .footer-list li {
+      margin-bottom: 10px;
+      display: block;
+      line-height: initial; }
+      .footerwrap .footer-list li a {
+        color: white;
+        text-decoration: none; }
   .footerwrap footer.site-footer {
-    padding: 0 5.5vw;
-    align-self: center;
-    max-width: 1170px;
+    padding-top: clamp(30px, 6.837vw, 80px);
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
     width: 100%; }
     .footerwrap footer.site-footer .wp-block-columns {
-      max-width: 1170px; }
+      max-width: 1170px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0;
+      margin-bottom: clamp(30px, 6.837vw, 80px); }
       .footerwrap footer.site-footer .wp-block-columns .wp-block-column.prefooter-col {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center; }
+        align-items: center;
+        min-width: 200px; }
         .footerwrap footer.site-footer .wp-block-columns .wp-block-column.prefooter-col.left {
-          padding-left: 25%; }
+          padding-left: 12.5%; }
         .footerwrap footer.site-footer .wp-block-columns .wp-block-column.prefooter-col.right {
-          padding-right: 25%; }
-      .footerwrap footer.site-footer .wp-block-columns .footer-col::first-of-type {
-        width: 33%; }
+          padding-right: 12.5%; }
+      .footerwrap footer.site-footer .wp-block-columns .footer-col:first-of-type {
+        width: 33%;
+        margin: 0;
+        min-width: 33%; }
+      .footerwrap footer.site-footer .wp-block-columns .footer-col:nth-of-type(2) {
+        width: 25%;
+        margin: 0;
+        padding-left: 30px;
+        border-left: 1px solid #303030; }
+      .footerwrap footer.site-footer .wp-block-columns .footer-col:nth-of-type(3) {
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%;
+        margin: 0;
+        padding-left: 30px;
+        border-left: 1px solid #303030; }
+      .footerwrap footer.site-footer .wp-block-columns .footer-col:nth-of-type(4) {
+        width: 25%;
+        margin: 0;
+        padding-left: 30px;
+        border-left: 1px solid #303030; }
 
 /* basic layout rules */
 html, body {
   width: 100%;
   height: 100%; }
+
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
 
 .wp-site-blocks {
   min-height: 100%;

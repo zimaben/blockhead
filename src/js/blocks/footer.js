@@ -9,7 +9,25 @@ const {PanelBody,ColorPalette, SelectControl } = wp.components
 wp.blocks.updateCategory( 'kitely', { icon: kitely_icons.kitelytech } );
 
 const TEMPLATE = [
-	[
+
+    [ "core/columns", {},
+        [
+
+            [ "core/column",
+                { className: "prefooter-col left"},
+                [
+                    ["core/html", { className: "kitely-review" }]
+                ]
+            ],
+            [ "core/column",
+                { className: "prefooter-col right"},
+                [
+                    ["core/html", { className: "kitely-review" }]
+                ]
+            ]
+        ]
+    ],
+    [
 		"core/columns", {},
 		[
 			[
@@ -49,7 +67,8 @@ const TEMPLATE = [
 				]
 			],
 		]
-	]
+	],
+    ["core/paragraph", {className:"kitely-post-footer"} ]
 ];
 
 registerBlockType('themeblockhead/footer', { 
@@ -84,27 +103,7 @@ registerBlockType('themeblockhead/footer', {
         function onChangeFooterType(newtype){
             setAttributes({footerType: newtype})
         }
-        function returnBlocks(){
-            if(footerColor){
-                return(   
-                    <footer className={footerType + ' site-footer'} style={{ backgroundColor:footerColor}}>     
-                        <InnerBlocks
-                            template={ TEMPLATE }
-                            templateLock="all"
-                        />
-                    </footer>                          
-                )
-            } else {
-                return (
-                    <footer className={footerType + ' site-footer'}>     
-                        <InnerBlocks
-                            template={ TEMPLATE }
 
-                        />
-                    </footer>   
-                )
-            }
-        }
 
         return ([
             <InspectorControls style={{marginBottom: '20px' }}>
@@ -133,9 +132,14 @@ registerBlockType('themeblockhead/footer', {
 						/>
                 </PanelBody>  
             </InspectorControls>,
-            <div className={'footerwrap'}>
-                { returnBlocks() }    
-            </div>
+            <div className={'footerwrap'} style={{ backgroundColor:footerColor}}>
+                <footer className={footerType + ' site-footer'}>     
+                    <InnerBlocks
+                        template={ TEMPLATE }
+                        templateLock="all"
+                    />
+                </footer>    
+        </div>
         
             ]);
         
@@ -145,30 +149,15 @@ registerBlockType('themeblockhead/footer', {
             footerType,
             footerColor
         } = attributes;
-        function returnBlocks(){
-            if(footerColor){
-                return(   
-                    <footer className={footerType + ' site-footer'} style={{ backgroundColor:footerColor}}>     
-                        <InnerBlocks.Content
-                            template={ TEMPLATE }
-                            templateLock="all"
-                        />
-                    </footer>                          
-                )
-            } else {
-                return (
+
+        return(
+            <div className={'footerwrap'} style={{ backgroundColor:footerColor}}>
                     <footer className={footerType + ' site-footer'}>     
                         <InnerBlocks.Content
                             template={ TEMPLATE }
                             templateLock="all"
                         />
-                    </footer>   
-                )
-            }
-        }
-        return(
-            <div className={'footerwrap'}>
-                { returnBlocks() }    
+                    </footer>    
             </div>
         )
     }

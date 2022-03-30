@@ -25,12 +25,22 @@ if( !class_exists( '\themeblockhead\Theme')) {
             \add_filter('upload_mimes', array($this, 'svg_support'));
             \add_action('block_categories_all', array($this, 'register_theme_blocktype'));
             \add_action('init', array($this, 'theme_blocks'));
+            \add_action( 'wp_head', array($this, 'theme_wp_head'));
+            \add_action( 'wp_footer', array($this, 'theme_wp_footer'));
 
         }
         public static function register_theme_blocktype( $categories ){
             return array_merge(
                 $categories, array( array('slug'=>'kitelytech', 'title'=>'KitelyTech Blocks', 'icon' => 'kitely'))
             );
+        }
+
+        public static function theme_wp_head(){
+            \wp_enqueue_script( 'upcity_widget', 'https://s3.amazonaws.com/top-local-agencies/js/upcity_widget.js', array(), '1.0.0', false);
+            \wp_enqueue_script( 'clutch_widget', 'https://widget.clutch.co/static/js/widget.js', array(), '1.0.0', false);
+        }
+        public static function theme_wp_footer(){
+            #do footer server-side scripts
         }
 
         public static function theme_blocks(){
@@ -115,6 +125,7 @@ if( !class_exists( '\themeblockhead\Theme')) {
                 'style'         => 'theme_blocks_global_css'
                     
             ) );
+
         }
 
         

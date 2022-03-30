@@ -4,7 +4,7 @@ import theme_info from '../../../theme.json'
 
 const { registerBlockType } = wp.blocks;
 const { PanelBody, ColorPalette } = wp.components;
-const { InspectorControls, RichText, TextControl } = wp.blockEditor; 
+const { InspectorControls, TextControl } = wp.blockEditor; 
 
 const foreground = theme_info.settings.color.palette.filter( item => item.slug === "foreground" )[0];
 const background = theme_info.settings.color.palette.filter( item => item.slug === "background" )[0];
@@ -20,7 +20,7 @@ registerBlockType('themeblockhead/prefooter', {
     attributes: {
         widgetCodeLeft: {
             type: 'string',
-			default: null
+			default: "https://widget.clutch.co/static/js/widget.js"
         },
         widgetCodeRight: {
             type: 'string',
@@ -61,27 +61,30 @@ registerBlockType('themeblockhead/prefooter', {
 
                 </PanelBody>  
             </InspectorControls>,
-                <div className="prefooter-wrap" style={{backgroundColor:preFooterColor}}>
-                    <div className="prefooter-container">
-                        <div class="prefooter-left">
-                        <TextControl
-                            className="widget-left"
-                            value={ widgetCodeLeft }
-                            onChange={onwidgetCodeLeft}
-                            label="Widget Code for the left"
-                        />
-                        </div>
-                        <div class="prefooter-right">
-                            <TextControl
-                                className="widget-right"
-                                value={ widgetCodeRight }
-                                onChange={onwidgetCodeRight}
-                                label="Widget Code for the right"
-                            />
-                        </div>    
+            <div className="prefooter-wrap" style={{backgroundColor:preFooterColor}}>
+                <div className="prefooter-container">
+                    <div class="prefooter-left">
+                    <label>Widget Code for the left</label>
+                    <input
+                        style={{width:"300px"}}
+                        className="editor-widget-input"
+                        value={ widgetCodeLeft }
+                        onChange={onwidgetCodeLeft}
+                    />
                     </div>
-                       
+                    <div class="prefooter-right">
+                        <label>label="Widget Code for the right"</label>
+                        <input
+                            style={{width:"300px"}}
+                            className="editor-widget-input"
+                            value={ widgetCodeRight }
+                            onChange={onwidgetCodeRight}
+                            
+                        />
+                    </div>    
                 </div>
+                    
+            </div>
         
             ]);
         
@@ -97,11 +100,12 @@ registerBlockType('themeblockhead/prefooter', {
             <div className="prefooter-wrap" style={{backgroundColor:preFooterColor}}>
                 <div className="prefooter-container">
                     <div class="prefooter-left">
-                    <script type="text/javascript" src={widgetCodeLeft} ></script>
+                       <script type="text/javascript" src={widgetCodeLeft}></script>
                     </div>
                     <div class="prefooter-right">
-                    <script type="text/javascript" src={widgetCodeRight} ></script>
-                    </div>    
+                       
+                        <iframe id="iframe-0.641990562456112" frameborder="0" width="100%" height="62px" scrolling="no" src="https://upcity.com/profiles/10807/reviews/widget/2?ref_domain=kitelytech.com"></iframe>
+                    </div> 
                 </div>       
             </div>
         )

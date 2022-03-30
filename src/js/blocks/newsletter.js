@@ -102,24 +102,24 @@ registerBlockType('themeblockhead/newsletter', {
                 </PanelBody>  
             </InspectorControls>,
             <div className="newsletter-wrap">
-            <div className="widget"> 
-                <h3 className="newsletter-title">Newsletter Subscription</h3>
-                <p className="sendgrid_widget_text">If you want to subscribe to our monthly newsletter, please submit the form below.</p>
-                <form method="post" id="" className="newsletter_form" novalidate="novalidate">
-                    <div className="sendgrid_mc_fields" style={{padding: "10px 0px 0px 0px;"}}>
-                        <div className="sendgrid_mc_label_div">
-                            <label for="sendgrid_mc_email" style={{color:"#fff;"}}>Email<sup>*</sup> :</label>
+                <div className="widget"> 
+                    <h3 className="newsletter-title">Newsletter Subscription</h3>
+                    <p className="sendgrid_widget_text">If you want to subscribe to our monthly newsletter, please submit the form below.</p>
+                    <form method="post" id="" className="newsletter_form" novalidate="novalidate">
+                        <div className="sendgrid_mc_fields" style={{padding: "10px 0px 0px 0px;"}}>
+                            <div className="sendgrid_mc_label_div">
+                                <label for="sendgrid_mc_email" style={{color:"#fff;"}}>Email<sup>*</sup> :</label>
+                            </div>
+                            <div className="sendgrid_mc_input_div">
+                                <input className="sendgrid_mc_input sendgrid_mc_input_email" id="newsletter_email" name="newsletter_email" type="text" value="" required="" />  
+                            </div>
                         </div>
-                        <div className="sendgrid_mc_input_div">
-                            <input className="sendgrid_mc_input sendgrid_mc_input_email" id="newsletter_email" name="newsletter_email" type="text" value="" required="" />  
+                        <div className="sendgrid_mc_button_div">
+                            <input style={{margin: "10px 0px 0px 0px;"}} className="sendgrid_mc_button" type="submit" id="sendgrid_mc_email_submit" value="SUBSCRIBE" />
                         </div>
-                    </div>
-                    <div className="sendgrid_mc_button_div">
-                        <input style={{margin: "10px 0px 0px 0px;"}} className="sendgrid_mc_button" type="submit" id="sendgrid_mc_email_submit" value="SUBSCRIBE" />
-                    </div>
-                </form>
-            </div>  
-        </div>
+                    </form>
+                </div>  
+            </div>
         
             ]);
         

@@ -20,6 +20,39 @@
   display: flex;
   flex-direction: column; }
 
+/* blocks */
+.theme-contactlist ul.contacts {
+  padding: 0;
+  list-style: none; }
+
+.kitelywidget.callnow a {
+  text-decoration: none;
+  display: inline-flex; }
+  .kitelywidget.callnow a .kt-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px; }
+    .kitelywidget.callnow a .kt-icon svg {
+      max-width: 100%; }
+
+.theme-contactlist ul.contacts {
+  padding: 0;
+  list-style: none; }
+
+.kitelywidget.callnow a {
+  text-decoration: none;
+  display: inline-flex; }
+  .kitelywidget.callnow a .it-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px; }
+
+.logo {
+  display: inline-flex;
+  min-width: 70px;
+  min-height: 70px; }
+
+/* layout blocks */
 .site-header-wrap {
   width: 100%;
   display: flex; }
@@ -35,8 +68,42 @@
     .site-header-wrap header.logo-center .logo {
       order: 2; }
 
-.logo {
-  display: inline-flex;
-  min-width: 70px;
-  min-height: 70px; }
+.footerwrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .footerwrap footer.site-footer {
+    padding: 0 5.5vw;
+    align-self: center;
+    max-width: 1170px;
+    width: 100%; }
+    .footerwrap footer.site-footer .wp-block-columns {
+      max-width: 1170px; }
+      .footerwrap footer.site-footer .wp-block-columns .wp-block-column.prefooter-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        .footerwrap footer.site-footer .wp-block-columns .wp-block-column.prefooter-col.left {
+          padding-left: 25%; }
+        .footerwrap footer.site-footer .wp-block-columns .wp-block-column.prefooter-col.right {
+          padding-right: 25%; }
+      .footerwrap footer.site-footer .wp-block-columns .footer-col::first-of-type {
+        width: 33%; }
+
+/* basic layout rules */
+html, body {
+  width: 100%;
+  height: 100%; }
+
+.wp-site-blocks {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+  .wp-site-blocks header, .wp-site-blocks div.site-footer {
+    flex-shrink: 1; }
+  .wp-site-blocks main {
+    flex-grow: 1; }
 
